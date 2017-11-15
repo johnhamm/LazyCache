@@ -1,5 +1,9 @@
 ﻿using System;
+#if NET45 || NET46
 using System.Runtime.Caching;
+#else
+using Microsoft.Extensions.Caching.Memory;
+#endif
 using System.Threading.Tasks;
 
 namespace LazyCache.Mocks

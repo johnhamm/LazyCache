@@ -1,11 +1,15 @@
 ﻿using System;
+#if NET45 || NET46
 using System.Runtime.Caching;
+#endif
 using System.Threading.Tasks;
 
 namespace LazyCache
 {
-    public interface IAppCache
+
+	public interface IAppCache
     {
+		
         ObjectCache ObjectCache { get; }
         void Add<T>(string key, T item);
         void Add<T>(string key, T item, DateTimeOffset absoluteExpiration);
