@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+#if NET45 || NET46
 using System.Runtime.Caching;
+#else
+using Microsoft.Extensions.Caching.Memory;
+#endif
 using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
@@ -14,7 +18,9 @@ namespace LazyCache.UnitTests
         [TearDown]
         public void TearDown()
         {
+#if NETSTANDARD2_0
             MemoryCache.Default.Remove(TestKey);
+#endif
         }
 
         [SetUp]
@@ -378,7 +384,10 @@ namespace LazyCache.UnitTests
             Assert.AreEqual(0, times);
         }
 
-        [Test, Timeout(20000)]
+#if NET45 || NET46
+        [Timeout(20000)]
+#endif
+        [Test]
         public async Task GetOrAddAsyncWithCallbackOnRemovedReturnsTheOriginalCachedObjectEvenIfNotGettedBeforehand()
         {
             Func<Task<int>> fetch = () => Task.FromResult(123);
@@ -493,7 +502,10 @@ namespace LazyCache.UnitTests
             Assert.AreEqual(0, times);
         }
 
-        [Test, Timeout(20000)]
+#if NET45 || NET46
+        [Timeout(20000)]
+#endif
+        [Test]
         public void GetOrAddWithCallbackOnRemovedReturnsTheOriginalCachedObjectEvenIfNotGettedBeforehand()
         {
             Func<int> fetch = () => 123;
@@ -569,7 +581,10 @@ namespace LazyCache.UnitTests
             Assert.AreEqual(1, times);
         }
 
-        [Test, Timeout(20000)]
+#if NET45 || NET46
+        [Timeout(20000)]
+#endif
+        [Test]
         public void GetOrAddWithPolicyWithCallbackOnRemovedReturnsTheOriginalCachedObject()
         {
             Func<int> fetch = () => 123;
@@ -664,7 +679,9 @@ namespace LazyCache.UnitTests
         }
 
         [Test]
+#if NET45 || NET46
         [Timeout(1000)]
+#endif
         public void GetOrAddAsyncWithALongTaskReturnsBeforeTaskCompletes()
         {
             var cachedResult = testObject;
