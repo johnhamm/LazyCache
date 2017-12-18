@@ -5,15 +5,16 @@
     <TargetFramework>net45</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="FluentAssertions" Version="4.19.4"/>
-    <PackageReference Include="NUnit" version="3.8.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
+    <PackageReference Include="FluentAssertions" Version="4.19.4" />
+    <PackageReference Include="NUnit" version="3.9.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.9.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LazyCache\LazyCache.csproj"/>
+    <ProjectReference Include="..\LazyCache\LazyCache.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="System.Runtime.Caching"/>
+    <Reference Include="System.Runtime.Caching" />
   </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-# Lazy Cache #
+# Lazy Cache (.net core version) #
 
 [![Build status](https://ci.appveyor.com/api/projects/status/oca98pp4safs4vj2/branch/master?svg=true)](https://ci.appveyor.com/project/alastairtree/lazycache/branch/master)
 [![NuGet](https://img.shields.io/nuget/v/LazyCache.svg?maxAge=2592000)](https://www.nuget.org/packages/LazyCache/)
@@ -11,12 +11,15 @@ reliability in heavy load scenarios.
 
 ## Download ##
 
-LazyCache is available using [nuget](https://www.nuget.org/packages/LazyCache/). To install LazyCache, run the following command in the [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)
+The original LazyCache is available using [nuget](https://www.nuget.org/packages/LazyCache/). To install LazyCache, run the following command in the [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)
 
 ```Powershell
 PM> Install-Package LazyCache
 ```
 
+This fork adds support for .net 4.5, .net 4.6, and .net standard 2.0.  This forked version works with ASP.NET core 2.0
+
+You can use this nuget feed to download this version: [johnhamm myget](https://www.myget.org/feed/lazycache/package/nuget/LazyCache).
 ## Sample code ##
 
 ```csharp

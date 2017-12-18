@@ -9,8 +9,7 @@ using Microsoft.Extensions.Options;
 #endif
 
 
-namespace LazyCache
-{
+namespace LazyCache {
 #if NETSTANDARD2_0
 	public class ObjectCache : MemoryCache
 	{
@@ -62,7 +61,13 @@ namespace LazyCache
 		public object AddOrGetExisting( string key , object value , CacheItemPolicy policy )
 		{
 			object result;
-			return !this.TryGetValue( key , out result ) ? value : result;
+            if (this.TryGetValue(key, out result)) {
+                return result;
+            }
+            else {
+                this.Set(key, value);
+                return null;
+            }
 		}
 
 
